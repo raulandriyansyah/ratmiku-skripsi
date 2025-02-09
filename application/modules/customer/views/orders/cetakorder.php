@@ -111,7 +111,7 @@ window.print();
                                 </td>
                             </tr>
                             <tr>
-                                <!-- <td>Status</td>
+                           <!-- <td>Status</td>
                                 <td><i><b>
                                             ?php if ($data->payment_method == 1) : ?>
                                             ?php if ($data->order_status == 1) : ?>
@@ -151,6 +151,7 @@ window.print();
                                         </b>
                                     </i>
                                 </td> -->
+
                             </tr>
                         </table>
                     </div>
@@ -168,6 +169,14 @@ window.print();
                             <tr>
                                 <td>No. HP</td>
                                 <td><b><?php echo $delivery_data->customer->phone_number; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Provinsi</td>
+                                <td><b><?php echo $delivery_data->customer->province; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Kota</td>
+                                <td><b><?php echo $delivery_data->customer->city; ?></b></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
@@ -326,7 +335,7 @@ window.print();
                         </td>
                     </tr>
                 </table>
-
+                
                 <!-- <div class="card card-primary">
                     <div class="card-header">
                         <h5 class="card-heading">Tindakan</h5>
@@ -371,7 +380,7 @@ window.print();
                         </div>
                     </div>
                 </div> -->
-
+                
             </div>
         </div>
     </section>

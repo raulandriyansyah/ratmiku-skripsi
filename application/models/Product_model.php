@@ -12,6 +12,20 @@ class Product_model extends CI_Model {
         return $this->db->get('packages')->result();
     }
 
+    public function get_category_item($id)
+    {
+        $this->db->select('name');
+        $this->db->from('product_category');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->name;
+        } else {
+            return null;
+        }
+    }
+
     public function best_deal_product()
     {
         $data = $this->db->where('is_available', 1)

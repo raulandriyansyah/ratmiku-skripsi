@@ -128,17 +128,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </select>
                                         <?php else : ?>
                                         <select class="form-control" id="status" name="status">
-                                            <option value="1"
-                                                <?php echo ($data->order_status == 1) ? ' selected' : ''; ?>>Dalam
-                                                proses</option>
                                             <option value="2"
-                                                <?php echo ($data->order_status == 2) ? ' selected' : ''; ?>>Sedang
-                                                Liburan</option>
+                                                <?php echo ($data->order_status == 2) ? ' selected' : ''; ?>>Dalam
+                                                proses</option>
                                             <option value="3"
-                                                <?php echo ($data->order_status == 3) ? ' selected' : ''; ?>>Selesai
-                                            </option>
+                                                <?php echo ($data->order_status == 3) ? ' selected' : ''; ?>>Sedang
+                                                Liburan</option>
                                             <option value="4"
-                                                <?php echo ($data->order_status == 4) ? ' selected' : ''; ?>>Batalkan
+                                                <?php echo ($data->order_status == 4) ? ' selected' : ''; ?>>Selesai
+                                            </option>
+                                            <option value="5"
+                                                <?php echo ($data->order_status == 5) ? ' selected' : ''; ?>>Batalkan
                                             </option>
                                         </select>
                                         <?php endif; ?>
@@ -208,6 +208,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>No. HP</td>
                             <td><b><?php echo $delivery_data->customer->phone_number; ?></b></td>
                         </tr>
+                        <tr>
+                                <td>Provinsi</td>
+                                <td><b><?php echo $delivery_data->customer->province; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Kota</td>
+                                <td><b><?php echo $delivery_data->customer->city; ?></b></td>
+                            </tr>
                         <tr>
                             <td>Alamat</td>
                             <td>

@@ -26,7 +26,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <div class="info-usre " style="flex: 2;">
                 <h3 class="profile-username text-left"><?= get_user_name() ?></h3>
                 <p class="text-muted text-left"><?= get_user_name() ?> | <?= get_user_email() ?></p>
-                <p class="text-left">Selamat datang sebagai member Ratmiku!</p>
+                <p class="text-left">Selamat datang sebagai member Ratmiku!!</p>
               </div>
             </div>
           </div>

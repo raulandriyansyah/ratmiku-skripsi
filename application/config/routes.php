@@ -55,3 +55,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'admin/admin';
 $route['customer'] = 'customer/customer';
+
+$route['proxy/city'] = 'proxy/city';
+$route['post']['proxy/ongkir'] = 'proxy/ongkir';
+$route['post']['proxy/ongkir'] = 'proxy/testing';
+
+

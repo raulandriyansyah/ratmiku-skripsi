@@ -60,8 +60,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <span class="flaticon-shipped"></span>
                     </div>
                     <div class="media-body">
-                        <h3 class="heading">Gratis Ongkir</h3>
-                        <span>Belanja minimal Rp</span>
+                        <h3 class="heading">Layanan Pengiriman</h3>
+                        <span>Gratis Ongkir Pengiriman Wilayah <br> Bandar Lampung</span>
                     </div>
                 </div>
             </div>
@@ -73,9 +73,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Kualitas Pelayanan Terbaik</h3>
-                        <span>Kualitas Terbaik Bersertifikasi</span>
+                        <span>Pelayanan Cepat & Kenyamanan Berbelanja</span>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
@@ -137,8 +137,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="row">
             <?php if (count($products) > 0): ?>
                 <?php foreach ($products as $product): ?>
-                    
+
                     <div class="col-md-6 col-lg-3 ftco-animate">
+                        <!-- <?= get_category_items($product->category_id) ?> -->
                         <div class="product">
                             <a href="<?php echo site_url('shop/product/' . $product->id . '/' . $product->sku . '/'); ?>"
                                 class="img-prod">
@@ -147,9 +148,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     alt="<?php echo $product->name; ?>">
                                 <?php if ($product->current_discount > 0): ?>
                                     <span
-                                        class="status"><?php echo count_percent_discount($product->current_discount, $product->price, 0); ?>%</span>
+                                        class="status"><?= get_category_items($product->category_id) ?> <?php echo count_percent_discount($product->current_discount, $product->price, 0); ?>% 
+                                    </span>
+                                <?php else: ?>
+                                    <span class="status"><?= get_category_items($product->category_id) ?></span>
                                 <?php endif; ?>
-                                <div class="overlay"></div>
+                                <div class="overlay">
+                                    
+                                </div>
                             </a>
                             <div class="text py-3 pb-4 px-3 text-center">
                                 <h3><a
@@ -166,7 +172,55 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <span class="mr-2"><span class="price-sale">Rp
                                                         <?php echo format_rupiah($product->price - $product->current_discount); ?></span>
                                                 <?php endif; ?>
+                                               
                                         </p>
+                                        <style>
+                                            .kategorii {
+                                                -webkit-text-size-adjust: 100%;
+                                                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                                                --blue: #c65e88;
+                                                --indigo: #6610f2;
+                                                --purple: #6f42c1;
+                                                --pink: #e83e8c;
+                                                --red: #dc3545;
+                                                --orange: #fd7e14;
+                                                --yellow: #fee3ee;
+                                                --green: #c65e88;
+                                                --teal: #20c997;
+                                                --cyan: #fbaccc;
+                                                --white: #fff;
+                                                --gray: #6c757d;
+                                                --gray-dark: #f991bb;
+                                                --primary: #c65e88;
+                                                --secondary: #6c757d;
+                                                --success: #c65e88;
+                                                --info: #fbaccc;
+                                                --warning: #fee3ee;
+                                                --danger: #dc3545;
+                                                --light: #f8f9fa;
+                                                --dark: #f991bb;
+                                                --breakpoint-xs: 0;
+                                                --breakpoint-sm: 576px;
+                                                --breakpoint-md: 768px;
+                                                --breakpoint-lg: 992px;
+                                                --breakpoint-xl: 1200px;
+                                                --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                                                --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                                                text-align: left;
+                                                font-family: "Poppins", Arial, sans-serif;
+                                                line-height: 1.8;
+                                                visibility: hidden;
+                                                box-sizing: border-box;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                padding: 2px 10px;
+                                                color: #fff;
+                                                font-weight: 300;
+                                                background: #F875AA;
+                                                font-size: 12px;
+                                            }
+                                        </style>
                                     </div>
                                 </div>
                                 <div class="bottom-area d-flex px-3">
@@ -194,7 +248,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
 </section>
-
 <section class="ftco-section img" style="background-image: url(<?php echo get_theme_uri('images/traveling8.jpg'); ?>);">
     <div class="container">
         <div class="row justify-content-end">
@@ -203,8 +256,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <h2 class="mb-4">Deal of the day</h2>
                 <p><?php echo $best_deal->description; ?></p>
                 <h3><a href="#"><?php echo $best_deal->name; ?></a></h3>
-                <span class="price">Rp <?php echo format_rupiah($best_deal->price); ?> <a href="#">sekarang hanya Rp
-                        <?php echo format_rupiah($best_deal->price - $best_deal->current_discount); ?></a></span>
+                <span class="price">
+                    <del>Rp <?php echo format_rupiah($best_deal->price); ?></del> 
+                    <a href="#">sekarang hanya Rp <?php echo format_rupiah($best_deal->price - $best_deal->current_discount); ?></a>
+                </span>
                 <div id="timer" class="d-flex mt-5">
                     <div class="time pl-3">
                         <a href="#" class="btn btn-primary add-cart" data-sku="<?php echo $best_deal->sku; ?>"
@@ -214,7 +269,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="time pl-3">
                         <a class="btn btn-info"
-                            href="<?php echo site_url('shop/product/' . $product->id . '/' . $product->sku . '/'); ?>"
+                            href="<?php echo site_url('shop/product/' . $best_deal->id . '/' . $best_deal->sku . '/'); ?>"
                             class="buy-now d-flex justify-content-center align-items-center text-center">
                             <span><i class="ion-ios-menu text-white"></i></span>
                         </a>
@@ -224,7 +279,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
 </section>
-
 <section class="ftco-section testimony-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">

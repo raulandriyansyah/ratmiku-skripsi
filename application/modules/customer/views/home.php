@@ -7,7 +7,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="font-family: 'Arial', sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
       <div class="modal-header">
         <!-- <h5 class="modal-title" id="exampleModalLabel">Member Ratmiku</h5> -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -25,7 +25,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
               </div>
               <div class="info-usre " style="flex: 2;">
                 <h3 class="profile-username text-left"><?= get_user_name() ?></h3>
-                <p class="text-muted text-left"><?= get_user_name() ?> | <?= get_user_email() ?></p>
+                <p class="text-muted text-left"><?= get_user_names() ?> | <?= get_user_email() ?></p>
+                <p>Member id : <?= member_id() ?></p>
                 <p class="text-left">Selamat datang sebagai member Ratmiku!</p>
               </div>
             </div>
@@ -33,13 +34,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Print</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+        <button type="button" class="btn btn-secondary" onclick="printData()">Cetak</button>
       </div>
     </div>
   </div>
 </div>
+<style>
+  .card.card-primary.card-outline {
+    border-color: pink;
+  }
 
+  .card.card-primary.card-outline .card-body.box-profile {
+    background-color: #ffe6f2;
+  }
+
+  .profile-username {
+    color: #ff66b2;
+  }
+
+  .text-muted {
+    color: #ff99cc !important;
+  }
+
+  .btn-secondary {
+    background-color: #ff66b2;
+    border-color: #ff66b2;
+  }
+
+  .btn-secondary:hover {
+    background-color: #ff3385;
+    border-color: #ff3385;
+  }
+</style>
 <script>
   $(document).ready(function () {
     $('#exampleModal').modal({
@@ -48,6 +75,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
       keyboard: false
     });
   });
+  function printData() {
+    var printContents = document.querySelector('.modal-body').innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+    document.body.style.width = '50mm'; // smaller width
+    document.body.style.height = '30mm'; // smaller height
+    window.print();
+    document.body.innerHTML = originalContents;
+    location.reload();
+  }
 </script>
 
 <!-- ending modal  -->

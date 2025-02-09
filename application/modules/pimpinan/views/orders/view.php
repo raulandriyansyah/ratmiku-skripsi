@@ -209,6 +209,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><b><?php echo $delivery_data->customer->phone_number; ?></b></td>
                         </tr>
                         <tr>
+                                <td>Provinsi</td>
+                                <td><b><?php echo $delivery_data->customer->province; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Kota</td>
+                                <td><b><?php echo $delivery_data->customer->city; ?></b></td>
+                            </tr>
+                        <tr>
                             <td>Alamat</td>
                             <td>
                                 <div style="white-space: initial;">

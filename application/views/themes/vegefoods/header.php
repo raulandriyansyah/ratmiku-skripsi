@@ -109,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </li>
                     <li class="nav-item cta cta-colored"><a href="<?php echo site_url('shop/cart'); ?>"
-                            class="nav-link"><span class="icon-shop"></span><span class="cart-item-total">0</span></a>
+                            class="nav-link" style="font-size: 1.2em;"><span class="icon-shopping_cart"></span><span class="cart-item-total">0</span></a>
                     </li>
 
                 </ul>

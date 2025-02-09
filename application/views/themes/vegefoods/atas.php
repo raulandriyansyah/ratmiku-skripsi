@@ -73,9 +73,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Kualitas Pelayanan Terbaik</h3>
-                        <span>Kualitas Terbaik Bersertifikasi</span>
+                        <span>Pelayanan Cepat & Kenyamanan Berbelanja</span>
                     </div>
-                    
                 </div>
             </div>
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">

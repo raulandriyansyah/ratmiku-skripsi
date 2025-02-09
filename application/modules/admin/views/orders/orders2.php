@@ -41,8 +41,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php if ( count($orders) > 0) : ?>
                 <div class="card-body p-0">
                     <div class="table-responsive">
+                    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+  
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table align-items-center table-flush" id="myTable">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">ID</th>
@@ -99,7 +102,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </table>
                     </div>
                 </div>
-
+<script>
+    import DataTable from 'datatables.net-dt';
+import 'datatables.net-responsive-dt';
+ 
+let table = new DataTable('#myTable', {
+    responsive: true
+});
+</script>
                 <div class="card-footer">
                     <?php echo $pagination; ?>
                 </div>

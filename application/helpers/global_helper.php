@@ -1,6 +1,68 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if (!function_exists('get_provice_name')) {
+    function get_provice_name($id, $city_id)
+    {
+        $curl = curl_init();
 
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=" . $id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => [
+            "Accept: */*",
+            "User-Agent: Thunder Client (https://www.thunderclient.com)",
+            "key: 69abd892b275c566ce1cfb9f7ae25352"
+            ],
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            $data = [
+            'status' => 'error',
+            'message' => "cURL Error #:" . $err
+            ];
+        } else {
+            $data = json_decode($response, true);
+            if (isset($data['rajaongkir']['results'])) {
+                $cities = $data['rajaongkir']['results'];
+                $city_found = false;
+                foreach ($cities as $city) {
+                    if ($city['city_id'] == $city_id) {
+                        $city_found = true;
+                        $data = [
+                            'status' => 'success',
+                            'province' => $city['province'],
+                            'city' => $city['city_name']
+                        ];
+                        break;
+                    }
+                }
+                if (!$city_found) {
+                    $data = [
+                        'status' => 'error',
+                        'message' => 'City ID not found in the specified province'
+                    ];
+                }
+            } else {
+                $data = [
+                    'status' => 'error',
+                    'message' => 'Invalid response from API'
+                ];
+            }
+        }
+
+        return $data;
+    }
+}
 if ( ! function_exists('get_settings'))
 {
     function get_settings($key = '')
@@ -101,6 +163,43 @@ if ( ! function_exists('get_user_email'))
         return $user->email;
     }
 }
+if ( ! function_exists('get_user_names'))
+{
+    function get_user_names()
+    {
+        $CI = init();
+        $id = get_current_user_id();
+
+        $user = $CI->db->query("
+            SELECT u.*, c.*
+            FROM users u
+            JOIN customers c
+                ON c.user_id = u.id
+            WHERE u.id = '$id'
+        ")->row();
+
+        return $user->username;
+    }
+}
+
+if ( ! function_exists('member_id'))
+{
+    function member_id()
+    {
+        $CI = init();
+        $id = get_current_user_id();
+
+        $user = $CI->db->query("
+            SELECT u.*, c.*
+            FROM users u
+            JOIN customers c
+                ON c.user_id = u.id
+            WHERE u.id = '$id'
+        ")->row();
+
+        return $user ? $user->member_id : null;
+    }
+}
 
 if ( ! function_exists('get_user_image'))
 {
@@ -186,6 +285,20 @@ if ( ! function_exists('format_rupiah')) {
     function format_rupiah($rp)
     {
         return number_format($rp, 2 ,',', '.');
+    }
+}
+
+// get category helper
+if (! function_exists('get_category_items'))
+{
+    function get_category_items($category_id)
+    {
+        $CI =& get_instance();
+        $CI->load->model('product_model');
+
+        $data = $CI->product_model->get_category_item($category_id);
+        
+        return $data;
     }
 }
 

@@ -9,6 +9,7 @@ class Home extends CI_Controller {
             'product_model' => 'product',
             'review_model' => 'review'
         ));
+        
     }
 
     public function index() {

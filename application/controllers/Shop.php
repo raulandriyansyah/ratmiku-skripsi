@@ -133,6 +133,7 @@ class Shop extends CI_Controller {
                  
                 $subtotal = $this->cart->total();
                 $ongkir = (int) ($subtotal >= get_settings('min_shop_to_free_shipping_cost')) ? 0 : get_settings('shipping_cost');
+                // penerimaan data dari form untuk cekout barang 
 
                 $params['customer'] = $this->customer->data();
                 $params['subtotal'] = $subtotal;
@@ -161,13 +162,21 @@ class Shop extends CI_Controller {
                 $name = $this->input->post('name');
                 $phone_number = $this->input->post('phone_number');
                 $address = $this->input->post('address');
+                $finis_total = $this->input->post('total');
+                $provinsi = $this->input->post('province');
+                $kabupaten = $this->input->post('city');
+                $prov_kab = get_provice_name($provinsi, $kabupaten);
+                $kurir = $this->input->post('courier');
                 $note = $this->input->post('note');
 
                 $delivery_data = array(
                     'customer' => array(
                         'name' => $name,
                         'phone_number' => $phone_number,
-                        'address' => $address
+                        'address' => $address,
+                        'province' => $prov_kab['province'],
+                        'city' => $prov_kab['city'],
+                        'courier' => $kurir
                     ),
                     'note' => $note
                 );
@@ -180,7 +189,7 @@ class Shop extends CI_Controller {
                     'order_number' => $order_number,
                     'order_status' => 1,
                     'order_date' => $order_date,
-                    'total_price' => $total_price,
+                    'total_price' => $finis_total,
                     'total_items' => $total_items,
                     'payment_method' => $payment,
                     'delivery_data' => $delivery_data

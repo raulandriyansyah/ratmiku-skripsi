@@ -13,9 +13,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div> -->
     </div>
 </div>
-
 <section class="ftco-section contact-section bg-light">
     <div class="container">
+    <!-- <style>
+        .contact-info .info {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            background: #fff;
+        }
+        </style> -->
         <div class="row d-flex mb-5 contact-info">
             <div class="w-100"></div>
             <div class="col-md-3 d-flex">
@@ -43,10 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-6 order-md-last d-flex">
                 <form action="<?php echo site_url('pages/send_message'); ?>" class="bg-white p-5 contact-form"
                     method="POST">
+                    <h2 class="mb-4">Hubungi Kami</h2>
                     <?php if ($flash) : ?>
                     <div class="text-success text-center" style="margin-bottom: 25px;"><?php echo $flash; ?></div>
                     <?php endif; ?>
-
                     <div class="form-group">
                         <input type="text" name="name" class="form-control"
                             value="<?php echo set_value('name', (is_login() ? get_user_name() : '')); ?>"

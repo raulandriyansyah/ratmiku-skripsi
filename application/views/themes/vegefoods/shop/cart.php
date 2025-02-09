@@ -6,10 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><?php echo anchor(base_url(), 'Home'); ?></span>
-                    <span>Keranjang Booking</span>
+                <p class="breadcrumbs"><span class="mr-2"><?php echo anchor(base_url(), 'Pesanan'); ?></span>
+                    <span></span>
                 </p>
-                <h1 class="mb-0 bread">Keranjang Booking Saya</h1>
+                <h1 class="mb-0 bread">Keranjang Pesanan Saya</h1>
             </div>
         </div>
     </div>
