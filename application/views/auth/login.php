@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <footer>
-        <p class="copyright-agileinfo"> &copy; 2024 <?php echo anchor(base_url(), get_store_name()); ?></p>
+        <p class="copyright-agileinfo"> &copy; 2025 <?php echo anchor(base_url(), get_store_name()); ?></p>
     </footer>
 
 </body>

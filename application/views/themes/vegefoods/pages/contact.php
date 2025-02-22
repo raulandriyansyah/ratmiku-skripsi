@@ -15,34 +15,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <section class="ftco-section contact-section bg-light">
     <div class="container">
-    <!-- <style>
+        <style>
         .contact-info .info {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
         }
-        </style> -->
+        .contact-info .info p {
+            margin: 0;
+            font-size: 16px;
+            color: #ff69b4; /* Pink color */
+        }
+        .contact-info .info span {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff1493; /* Bright pink color */
+        }
+        </style>
         <div class="row d-flex mb-5 contact-info">
             <div class="w-100"></div>
             <div class="col-md-3 d-flex">
-                <div class="info  p-4">
-                    <p><span>Alamat</span> <?php echo get_settings('store_address'); ?></p>
-                </div>
+            <div class="info p-4">
+                <p><span>Alamat</span> <?php echo get_settings('store_address'); ?></p>
+            </div>
             </div>
             <div class="col-md-3 d-flex">
-                <div class="info  p-4">
-                    <p><span>No. HP</span> <?php echo get_settings('store_phone_number'); ?></p>
-                </div>
+            <div class="info p-4">
+                <p><span>No. HP</span> <?php echo get_settings('store_phone_number'); ?></p>
+            </div>
             </div>
             <div class="col-md-3 d-flex">
-                <div class="info p-4">
-                    <p><span>Email:</span> <?php echo get_settings('store_email'); ?></p>
-                </div>
+            <div class="info p-4">
+                <p><span>Email</span> <?php echo get_settings('store_email'); ?></p>
+            </div>
             </div>
             <div class="col-md-3 d-flex">
-                <div class="info  p-4">
-                    <p><span>Website</span> www.ratmiku.com</p>
-                </div>
+            <div class="info p-4">
+                <p><span>Website</span> www.ratmiku.com</p>
+            </div>
             </div>
         </div>
         <div class="row block-9">

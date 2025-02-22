@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!-- Header -->
 <div class="header bg-primary pb-6">
@@ -30,107 +30,150 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="card-header">
                     <h3 class="mb-0">Data Pesanan Barang</h3>
                 </div>
-                <button class="btn"><a class="nav-link" href="<?php echo site_url('admin/orders2/cetakorders2'); ?>"
+                <!-- <button class="btn"><a class="nav-link" href="<?php echo site_url('admin/orders2/cetakorders2'); ?>"
                         target="_blank">
                         <i class="fa fa-file-invoice text-danger"></i>
                         <span class="nav-link-text">Cetak Pdf</span>
                     </a>
-                </button>
+                </button> -->
 
 
-                <?php if ( count($orders) > 0) : ?>
                 <div class="card-body p-0">
                     <div class="table-responsive">
-                    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
-  
-  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+                        <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+                        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+                        <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+                        <script src="https://cdn.datatables.net/buttons/3.2.1/js/dataTables.buttons.js"></script>
+                        <script src="https://cdn.datatables.net/buttons/3.2.1/js/buttons.dataTables.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+                        <script src="https://cdn.datatables.net/buttons/3.2.1/js/buttons.html5.min.js"></script>
+                        <script src="https://cdn.datatables.net/buttons/3.2.1/js/buttons.print.min.js"></script>
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush" id="myTable">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Tanggal Transaksi</th>
-                                    <th scope="col">Jumlah Jumlah</th>
-                                    <th scope="col">Jumlah Harga</th>
-                                    <th scope="col">Status</th>
-                                    <!-- <th scope="col">Status</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($orders as $order) : ?>
-                                <tr>
-                                    <th scope="col">
-                                        <?php echo $order->order_number; ?>
-                                    </th>
-                                    <td><?php echo $order->customer; ?></td>
-                                    <td>
-                                        <?php echo get_formatted_date($order->order_date); ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $order->total_items; ?>
-                                    </td>
-                                    <td>
-                                        Rp <?php echo format_rupiah($order->total_price); ?>
-                                    </td>
-                                    <td>
-                                        <select class="form-control" id="$order->order_status"
-                                            name="$order->order_status" readonly>
-                                            <option value="2"
-                                                <?php echo ($order->order_status == 2) ? ' selected' : ''; ?>>Dalam
-                                                proses</option>
-                                            <option value="3"
-                                                <?php echo ($order->order_status == 3) ? ' selected' : ''; ?>>Sedang
-                                                Liburan</option>
-                                            <option value="4"
-                                                <?php echo ($order->order_status == 4) ? ' selected' : ''; ?>>Selesai
-                                            </option>
-                                            <option value="5"
-                                                <?php echo ($order->order_status == 5) ? ' selected' : ''; ?>>Di
-                                                Batalkan
-                                            </option>
-                                        </select>
-                                    </td>
-
-
-
-                                    <!-- <td>?php echo get_order_status($order->order_status, $order->payment_method); ?>
-                                    </td> -->
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-<script>
-    import DataTable from 'datatables.net-dt';
-import 'datatables.net-responsive-dt';
- 
-let table = new DataTable('#myTable', {
-    responsive: true
-});
-</script>
-                <div class="card-footer">
-                    <?php echo $pagination; ?>
-                </div>
-                <?php else : ?>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="alert alert-primary">
-                                Belum ada Data Barang yang ditambahkan. Silahkan menambahkan baru.
+                        <form method="get" class="ml-4 mt-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="month" value="<?php echo $bulan ?? ''; ?>"
+                                            class="form-control form-control-sm" name="bulan">
+                                    </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                    <button type="submit" class="btn btn-outline-primary btn-sm"><i
+                                            class="fa fa-filter"></i> Filter</button>
+                                    <button type="submit" formaction="<?php echo site_url('admin/orders2/cetak'); ?>" class="btn btn-primary btn-sm">Cetak</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="<?php echo site_url('admin/products/add_new_product'); ?>"><i
-                                    class="fa fa-plus"></i> Tambah paket baru</a>
-                            <br>
-                            <a href="<?php echo site_url('admin/products/category'); ?>"><i class="fa fa-list"></i>
-                                Kelola kategori</a>
-                        </div>
+                        </form>
+                        <?php if (count($orders) > 0): ?>
+                            <table class="table align-items-center table-flush" id="laporan">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Tanggal Transaksi</th>
+                                        <th scope="col">Jumlah Jumlah</th>
+                                        <th scope="col">Jumlah Harga</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($orders as $order): ?>
+                                        <tr>
+                                            <th scope="col">
+                                                <?php echo $order->order_number; ?>
+                                            </th>
+                                            <td><?php echo $order->customer; ?></td>
+                                            <td>
+                                                <?php echo get_formatted_date($order->order_date); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $order->total_items; ?>
+                                            </td>
+                                            <td>
+                                                Rp <?php echo format_rupiah($order->total_price); ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                switch ($order->order_status) {
+                                                    case 2:
+                                                        echo 'Dalam proses';
+                                                        break;
+                                                    case 3:
+                                                        echo 'Sedang Liburan';
+                                                        break;
+                                                    case 4:
+                                                        echo 'Selesai';
+                                                        break;
+                                                    case 5:
+                                                        echo 'Di Batalkan';
+                                                        break;
+                                                    default:
+                                                        echo 'Status tidak diketahui';
+                                                        break;
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                            <!-- <script>
+                                document.getElementById('printTable').addEventListener('click', function () {
+                                    var printContents = document.getElementById('laporan').outerHTML;
+                                    var originalContents = document.body.innerHTML;
+                                    document.body.innerHTML = `
+                                        <html>
+                                            <head>
+
+                                                <title>Print Table</title>
+                                                <style>
+                                                    @media print {
+                                                        .header, .footer {
+                                                            display: block;
+                                                        }
+                                                        @page {
+                                                            size: A4;
+                                                            margin: 20mm;
+                                                        }
+                                                    }
+                                                    .header {
+                                                        text-align: center;
+                                                        margin-bottom: 20px;
+                                                    }
+                                                    .footer {
+                                                        text-align: center;
+                                                        margin-top: 20px;
+                                                        page-break-inside: avoid; /* Memastikan muncul di halaman terakhir */
+                                                    }
+                                                </style>
+                                            </head>
+                                            <body>
+                                                <div class="header">
+                                                    <h2>Data Pesanan Barang</h2>
+                                                </div>
+                                                ${printContents}
+                                                <div class="footer" style="page-break-before: always;">
+                                                    <p>Tanda Tangan</p>
+                                                    <br><br><br>
+                                                    <p>_________________________</p>
+                                                </div>
+                                            </body>
+                                        </html>`;
+                                window.print();
+                                document.body.innerHTML = originalContents;
+                                location.reload();
+                            });
+                        </script> -->
+                        <?php else: ?>
+                            <p class="text-center">Tidak ada yang bisa ditampilkan</p>
+                        <?php endif; ?>
+
                     </div>
                 </div>
-                <?php endif; ?>
+
 
             </div>
         </div>

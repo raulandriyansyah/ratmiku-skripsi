@@ -150,7 +150,6 @@ class Shop extends CI_Controller {
             break;
             case 'order' :
                 $quantity = $this->session->userdata('order_quantity');
-
                 $user_id = get_current_user_id();
                 $coupon_id = $this->session->userdata('coupon_id');
                 $order_number = $this->_create_order_number($quantity, $user_id, $coupon_id);
@@ -158,17 +157,17 @@ class Shop extends CI_Controller {
                 $total_price = $this->session->userdata('total_price');
                 $total_items = count($quantity);
                 $payment = $this->input->post('payment');
-
+                
                 $name = $this->input->post('name');
                 $phone_number = $this->input->post('phone_number');
                 $address = $this->input->post('address');
                 $finis_total = $this->input->post('total');
+                $etimasi = $this->input->post('etimasi');
                 $provinsi = $this->input->post('province');
                 $kabupaten = $this->input->post('city');
                 $prov_kab = get_provice_name($provinsi, $kabupaten);
                 $kurir = $this->input->post('courier');
                 $note = $this->input->post('note');
-
                 $delivery_data = array(
                     'customer' => array(
                         'name' => $name,
@@ -180,9 +179,9 @@ class Shop extends CI_Controller {
                     ),
                     'note' => $note
                 );
-
+                
                 $delivery_data = json_encode($delivery_data);
-
+                
                 $order = array(
                     'user_id' => $user_id,
                     'coupon_id' => $coupon_id,
@@ -194,9 +193,9 @@ class Shop extends CI_Controller {
                     'payment_method' => $payment,
                     'delivery_data' => $delivery_data
                 );
-
+                
                 $order = $this->product->create_order($order);
-
+                
                 $n = 0;
                 foreach ($quantity as $id => $data)
                 {
@@ -204,9 +203,15 @@ class Shop extends CI_Controller {
                     $items[$n]['product_id'] = $id;
                     $items[$n]['order_qty'] = $data['qty'];
                     $items[$n]['order_price'] = $data['price'];
-
+                    $items[$n]['pengiriman'] = $etimasi;
+                    
                     $n++;
                 }
+                // $this->output->set_content_type('application/json')
+                //     ->set_output(json_encode($items));
+                // return;
+                
+                // return($items);
 
                 $this->product->create_order_items($items);
 
@@ -235,12 +240,14 @@ class Shop extends CI_Controller {
                 $sku = $this->input->post('sku');
                 $name = $this->input->post('name');
                 $price = $this->input->post('price');
+                $pengiriman = $this->input->post('pengiriman');
                 
                 $item = array(
                     'id' => $id,
                     'qty' => $qty,
                     'price' => $price,
-                    'name' => $name
+                    'name' => $name,
+                    'pengiriman' => $pengiriman
                 );
                 $this->cart->insert($item);
                 $total_item = count($this->cart->contents());

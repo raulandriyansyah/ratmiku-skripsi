@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                 </div>
                 <p>
-                    <a href="javascript:void(0);" class="btn btn-black btn-sm py-3 px-5 add-cart cart-btn"
+                    <a href="javascript:void(0);" class="btn btn-black btn-sm py-3 px-4 add-cart cart-btn"
                         data-sku="<?php echo $product->sku; ?>" data-name="<?php echo $product->name; ?>"
                         data-price="<?php echo ($product->current_discount > 0) ? ($product->price - $product->current_discount) : $product->price; ?>"
                         data-id="<?php echo $product->id; ?>" onclick="redirectToCart()">Beli Sekarang</a>
@@ -88,10 +88,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             window.location.href = "<?php echo site_url('shop/cart'); ?>";
                         }
                     </script>
-                    <a href="#" class="btn btn-black btn-sm py-3 px-5 add-cart cart-btn"
+                    <a href="#" class="btn btn-black btn-sm py-3 px-3 add-cart cart-btn"
                         data-sku="<?php echo $product->sku; ?>" data-name="<?php echo $product->name; ?>"
                         data-price="<?php echo ($product->current_discount > 0) ? ($product->price - $product->current_discount) : $product->price; ?>"
-                        data-id="<?php echo $product->id; ?>">Masukan Ke Keranjang</a>
+                        data-id="<?php echo $product->id; ?>">Masukan Keranjang</a>
                 </p>
             </div>
         </div>

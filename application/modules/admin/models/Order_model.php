@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Order_model extends CI_Model {
+class Order_model extends CI_Model
+{
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +13,7 @@ class Order_model extends CI_Model {
         return $this->db->get('orders')->num_rows();
     }
 
-    public function get_all_orders($limit, $start)
+    public function get_all_orders()
     {
         $orders = $this->db->query("
             SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
@@ -22,7 +23,22 @@ class Order_model extends CI_Model {
             JOIN customers cu
                 ON cu.user_id = o.user_id
             ORDER BY o.order_date DESC
-            LIMIT $start, $limit
+        ");
+
+        return $orders->result();
+    }
+
+
+    public function order_by_month($month_year)
+    {
+        $orders = $this->db->query("
+        SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
+            FROM orders o
+            LEFT JOIN coupons c ON c.id = o.coupon_id
+            JOIN customers cu ON cu.user_id = o.user_id
+            WHERE DATE_FORMAT(o.order_date, '%Y-%m') = '$month_year'    
+            ORDER BY o.order_date DESC;
+
         ");
 
         return $orders->result();
@@ -41,7 +57,7 @@ class Order_model extends CI_Model {
             LIMIT 5
         ");
 
-    return $orders->result();
+        return $orders->result();
     }
 
     public function is_order_exist($id)
@@ -60,7 +76,7 @@ class Order_model extends CI_Model {
                 ON p.order_id = o.id
             WHERE o.id = '$id'
         ");
-        
+
         return $data->row();
     }
 

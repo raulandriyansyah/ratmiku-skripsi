@@ -89,15 +89,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="n-subtotal font-weight-bold">Rp
                                 <?php echo format_rupiah($total_cart); ?></span>
                         </p>
-                        <p class="d-flex">
-                            <span>Biaya Pengiriman</span>
-                            <?php if ( $total_cart >= get_settings('min_shop_to_free_shipping_cost')) : ?>
-                            <span class="n-ongkir font-weight-bold">Gratis</span>
-                            <?php else : ?>
-                            <span class="n-ongkir font-weight-bold">Rp
-                                <?php echo format_rupiah(get_settings('shipping_cost')); ?></span>
-                            <?php endif; ?>
-                        </p>
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>

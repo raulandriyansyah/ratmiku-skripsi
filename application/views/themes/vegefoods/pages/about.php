@@ -7,14 +7,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             </div>
         </div>
-    </div>
+    </div>  
 </div>
 
 <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center"
-                style="background-image: url(<?= base_url()?>/assets/themes/vegefoods/images/ratmiku.jpeg   );">
+                style="background-image: url(<?= base_url()?>/assets/themes/vegefoods/images/tentangkami.jpg );">
             </div>
             <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                 <div class="heading-section-bold mb-4 mt-md-5">
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="pb-md-5">
-                    <p ><?php echo get_settings('store_description'); ?></p>
+                    <p><?php echo get_settings('store_description'); ?></p>
                     <p><a href="<?php echo site_url('/'); ?>" class="btn btn-primary">Belanja sekarang!</a></p>
                 </div>
             </div>

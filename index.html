@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Data Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+</head>
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Customer</th>
+                <th>Tanggal Transaksi</th>
+                <th>Jumlah Jumlah</th>
+                <th>Jumlah Harga</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable after generating data
+            generateDummyData();
+
+            $('#example').DataTable();
+        });
+
+        function generateDummyData() {
+            const tbody = document.getElementById('table-body'); // Correct reference to tbody
+            for (let i = 1; i <= 100; i++) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${i}</td>
+                    <td>Customer ${i}</td>
+                    <td>${new Date().toLocaleDateString()}</td>
+                    <td>${Math.floor(Math.random() * 100)}</td>
+                    <td>${(Math.random() * 1000).toFixed(2)}</td>
+                    <td>${Math.random() > 0.5 ? 'Completed' : 'Pending'}</td>
+                `;
+                tbody.appendChild(row); // Append row to tbody
+            }
+        }
+    </script>
+</body>
+</html>

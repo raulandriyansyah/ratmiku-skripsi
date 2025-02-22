@@ -74,7 +74,7 @@ class Order_model extends CI_Model {
     public function order_items($id)
     {
         $items = $this->db->query("
-            SELECT oi.product_id, oi.order_qty, oi.order_price, p.name, p.picture_name, p.date_tour
+            SELECT oi.product_id, oi.order_qty, oi.order_price, p.name, p.picture_name, p.date_tour, oi.pengiriman
             FROM order_item oi
             JOIN packages p
 	            ON p.id = oi.product_id

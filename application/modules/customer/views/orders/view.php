@@ -51,6 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </td>
                             </tr>
                             <tr>
+                                <td>Estimasi Pengiriman</td>
+                                <td><b><?php echo $items[0]->pengiriman; ?></b>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Status</td>
                                 <td><i><b>
                                             <?php if ($data->payment_method == 1) : ?>

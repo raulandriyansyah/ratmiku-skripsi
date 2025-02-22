@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Data Pesanan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table th, table td {
+                border: 1px solid #000;
+                padding: 8px;
+                text-align: center;
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .footer {
+                text-align: center;
+                margin-top: 20px;
+                page-break-before: always; /* Memastikan muncul di halaman terakhir */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="printTable" class="btn btn-primary btn-sm">
+        <i class="fa fa-print"></i> Cetak
+    </button>
+
+    <div id="printArea">
+        <div class="header">
+            <h2>Data Pesanan Barang</h2>
+            <p>Periode: Februari 2025</p>
+        </div>
+        
+        <table id="laporan">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Jumlah Item</th>
+                    <th>Jumlah Harga</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Data akan diisi dengan JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <p>Tanda Tangan</p>
+            <br><br><br>
+            <p>_________________________</p>
+        </div>
+    </div>
+
+    <script>
+        // Dummy Data
+        const orders = [];
+        for (let i = 1; i <= 50; i++) { // Tambah banyak data agar lebih dari satu halaman
+            orders.push({
+                order_number: `ORD00${i}`,
+                customer: `Customer ${i}`,
+                order_date: "2025-02-18",
+                total_items: Math.floor(Math.random() * 10) + 1,
+                total_price: (Math.floor(Math.random() * 500) + 50) * 1000,
+                order_status: Math.floor(Math.random() * 4) + 2
+            });
+        }
+
+        function getStatusText(status) {
+            switch (status) {
+                case 2: return 'Dalam Proses';
+                case 3: return 'Sedang Liburan';
+                case 4: return 'Selesai';
+                case 5: return 'Dibatalkan';
+                default: return 'Status Tidak Diketahui';
+            }
+        }
+
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(angka);
+        }
+
+        function loadTableData() {
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = "";
+            orders.forEach(order => {
+                const row = `
+                    <tr>
+                        <td>${order.order_number}</td>
+                        <td>${order.customer}</td>
+                        <td>${order.order_date}</td>
+                        <td>${order.total_items}</td>
+                        <td>${formatRupiah(order.total_price)}</td>
+                        <td>${getStatusText(order.order_status)}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        document.getElementById("printTable").addEventListener("click", function () {
+            window.print();
+        });
+
+        document.addEventListener("DOMContentLoaded", loadTableData);
+    </script>
+
+</body>
+</html>

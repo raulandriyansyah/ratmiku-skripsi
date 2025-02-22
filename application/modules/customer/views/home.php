@@ -66,6 +66,42 @@ defined('BASEPATH') or exit('No direct script access allowed');
     background-color: #ff3385;
     border-color: #ff3385;
   }
+
+  /* nnew style */
+  @media print {
+  * {
+    visibility: hidden;
+  }
+
+  .print-card, .print-card * {
+    visibility: visible;
+  }
+
+  .print-card {
+    width: 8.6cm;
+    height: 5.4cm;
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+  }
+
+  .print-card img {
+    width: 2cm;
+    height: 2cm;
+    border-radius: 5px;
+  }
+
+  .modal-footer {
+    display: none;
+  }
+}
+
 </style>
 <script>
   $(document).ready(function () {
@@ -76,16 +112,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
     });
   });
   function printData() {
-    var printContents = document.querySelector('.modal-body').innerHTML;
-    var originalContents = document.body.innerHTML;
+  var printContent = document.querySelector('.modal-body').innerHTML;
+  var originalContent = document.body.innerHTML;
 
-    document.body.innerHTML = printContents;
-    document.body.style.width = '50mm'; // smaller width
-    document.body.style.height = '30mm'; // smaller height
-    window.print();
-    document.body.innerHTML = originalContents;
-    location.reload();
-  }
+  document.body.innerHTML = printContent;
+  window.print();
+  document.body.innerHTML = originalContent;
+}
+
 </script>
 
 <!-- ending modal  -->

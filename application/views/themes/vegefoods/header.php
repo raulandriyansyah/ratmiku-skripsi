@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="<?php echo base_url(); ?>">
-                <img src="<?php echo base_url('assets/themes/vegefoods/images/logo.png'); ?>" alt="<?php echo get_store_name(); ?>" style="height: 50px;">
+                <img src="<?php echo base_url('assets/themes/vegefoods/images/logo.png'); ?>"
+                    alt="<?php echo get_store_name(); ?>" style="height: 50px;">
             </a>
             <!-- <a class="navbar-brand" href="<?php echo base_url(); ?>"><?php echo get_store_name(); ?></a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -82,13 +83,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li class="nav-item active"><a href="<?php echo base_url(); ?>" class="nav-link">Beranda</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Kategori</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="<?php echo site_url('category/fashion'); ?>">Fashion</a>
+                            <a class="dropdown-item" href="<?php echo site_url('category/art'); ?>">Alat Rumah Tangga</a>
+                            <a class="dropdown-item" href="<?php echo site_url('category/aksesoris'); ?>">Aksesoris</a>
+                           
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Pesanan</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
+                          
                             <a class="dropdown-item" href="<?php echo site_url('shop/cart'); ?>">Pesanan</a>
                             <a class="dropdown-item"
                                 href="<?php echo site_url('customer/payments/confirm'); ?>">Konfirmasi Pembayaran</a>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item"><a href="<?php echo site_url('pages/about'); ?>" class="nav-link">Tentang
                             Kami</a></li>
                     <li class="nav-item"><a href="<?php echo site_url('pages/contact'); ?>" class="nav-link">Kontak</a>
@@ -97,19 +109,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Akun</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
-                            <?php if ( is_login() && is_customer()) : ?>
-                            <a class="dropdown-item" href="<?php echo site_url('customer'); ?>">Akun saya</a>
-                            <a class="dropdown-item" href="<?php echo site_url('customer/orders'); ?>">Order</a>
-                            <div class="divider"></div>
-                            <a class="dropdown-item" href="<?php echo site_url('auth/logout'); ?>">Logout</a>
-                            <?php else : ?>
-                            <a class="dropdown-item" href="<?php echo site_url('auth/login'); ?>">Masuk Akun</a>
-                            <a class="dropdown-item" href="<?php echo site_url('auth/register'); ?>">Daftar</a>
+                            <?php if (is_login() && is_customer()): ?>
+                                <a class="dropdown-item" href="<?php echo site_url('customer'); ?>">Akun saya</a>
+                                <a class="dropdown-item" href="<?php echo site_url('customer/orders'); ?>">Order</a>
+                                <div class="divider"></div>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/logout'); ?>">Logout</a>
+                            <?php else: ?>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/login'); ?>">Masuk Akun</a>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/register'); ?>">Daftar</a>
                             <?php endif; ?>
                         </div>
                     </li>
-                    <li class="nav-item cta cta-colored"><a href="<?php echo site_url('shop/cart'); ?>"
-                            class="nav-link" style="font-size: 1.2em;"><span class="icon-shopping_cart"></span><span class="cart-item-total">0</span></a>
+                    <li class="nav-item cta cta-colored"><a href="<?php echo site_url('shop/cart'); ?>" class="nav-link"
+                            style="font-size: 1.2em;"><span class="icon-shopping_cart"></span><span
+                                class="cart-item-total">0</span></a>
                     </li>
 
                 </ul>
