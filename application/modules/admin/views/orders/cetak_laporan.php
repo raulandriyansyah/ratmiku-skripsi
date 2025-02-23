@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Cetak Laporan</title>
@@ -45,7 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         @media print {
-            html, body {
+
+            html,
+            body {
                 width: 210mm;
                 height: 297mm;
             }
@@ -68,11 +71,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             margin-bottom: 20px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid black;
         }
 
-        th, td {
+        th,
+        td {
             padding: 10px;
             text-align: left;
         }
@@ -88,54 +94,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     </style>
 </head>
+
 <body>
     <div class="page">
         <div class="subpage">
             <div style="font-size: 22px" align="center">
-                <?php if (!empty($bulan)) : ?>
+                <?php if (!empty($bulan)): ?>
                     Laporan Pesanan Bulan <?php echo date('F Y', strtotime($bulan)); ?>
-                <?php else : ?>
+                <?php else: ?>
                     Laporan Pesanan RATMIKU
                 <?php endif; ?>
             </div>
             <div style="font-size: 35px" align="center">RATMIKU LAMPUNG</div>
-            <div style="font-size: 12px" align="center">Jl. Kartini No.62, Palapa, Kec. Tj. Karang Pusat, Kota Bandar Lampung</div>
+            <div style="font-size: 12px" align="center">Jl. Kartini No.62, Palapa, Kec. Tj. Karang Pusat, Kota Bandar
+                Lampung</div>
             <hr>
-            <?php if (count($orders) > 0) : ?>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table align-items-center table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Customer</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Jumlah Barang</th>
-                                <th>Jumlah Harga</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($orders as $order) : ?>
-                            <tr>
-                                <td><?= $order->id ?></td>
-                                <td><?= $order->customer ?></td>
-                                <td><?= $order->order_date ?></td>
-                                <td><?= $order->total_items ?></td>
-                                <td><?= $order->total_price ?></td>
-                                <td><?= $order->order_status ?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+            <?php if (count($orders) > 0): ?>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Jumlah Barang</th>
+                                    <th>Jumlah Harga</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($orders as $order): ?>
+                                    <tr>
+                                        <td><?= $order->id ?></td>
+                                        <td><?= $order->customer ?></td>
+                                        <td><?= $order->order_date ?></td>
+                                        <td><?= $order->total_items ?></td>
+                                        <td><?= $order->total_price ?></td>
+                                        <td><?php
+                                        switch ($order->order_status) {
+                                            case 2:
+                                                echo 'Dalam proses';
+                                                break;
+                                            case 3:
+                                                echo 'Sedang Liburan';
+                                                break;
+                                            case 4:
+                                                echo 'Selesai';
+                                                break;
+                                            case 5:
+                                                echo 'Di Batalkan';
+                                                break;
+                                            default:
+                                                echo 'Status tidak diketahui';
+                                                break;
+                                        }
+                                        ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <?php else : ?>
-            <div class="card-body">
-                <div class="alert alert-primary">
-                    Belum ada Data Pesanan pada bulan ini.
+            <?php else: ?>
+                <div class="card-body">
+                    <div class="alert alert-primary">
+                        Belum ada Data Pesanan pada bulan ini.
+                    </div>
                 </div>
-            </div>
             <?php endif; ?>
             <div class="signature">
                 <div>Bandar Lampung, <?php echo date('d F Y'); ?></div>
@@ -148,4 +174,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         window.print();
     </script>
 </body>
+
 </html>

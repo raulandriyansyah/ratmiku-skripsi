@@ -191,9 +191,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         });
 
                         function updateTotal() {
-                            var subtotal = <?php echo $subtotal; ?>;
+                            var subtotal = <?php echo $total; ?>;
                             var ongkir = parseInt(document.getElementById('ongkir').textContent.replace(/[^0-9]/g, '')) || 0;
-                            var total = subtotal + ongkir;
+                            var total = subtotal + ongkir ;
                             document.querySelector('.total-price span:last-child').textContent = 'Rp ' + total.toLocaleString();
                             document.querySelector('.total-price input[name="total"]').value = total;
                         }

@@ -95,6 +95,7 @@ class Shop extends CI_Controller {
                     {
                         if ($this->customer->is_coupon_active($coupon))
                         {
+                            
                             if ( $this->customer->is_coupon_expired($coupon))
                             {
                                 $discount = 0;
@@ -102,11 +103,16 @@ class Shop extends CI_Controller {
                             }
                             else
                             {
+                                
+                                $credit = $this->customer->get_coupon_credit($coupon);
+                                $discount = $credit;
+                                if ($this->cart->total() < $discount) {
+                                    $discount = 0;
+                                    $disc = 'Kupon Tidak Bisa di Gunakan';
+                                }
                                 $coupon_id = $this->customer->get_coupon_id($coupon);
                                 $this->session->set_userdata('coupon_id', $coupon_id);
 
-                                $credit = $this->customer->get_coupon_credit($coupon);
-                                $discount = $credit;
                                 $disc = '<span class="badge badge-success">'. $coupon .'</span> Rp '. format_rupiah($credit);
                             }
                         }
@@ -132,13 +138,16 @@ class Shop extends CI_Controller {
                 }
                  
                 $subtotal = $this->cart->total();
+                
+               
+                
                 $ongkir = (int) ($subtotal >= get_settings('min_shop_to_free_shipping_cost')) ? 0 : get_settings('shipping_cost');
                 // penerimaan data dari form untuk cekout barang 
 
                 $params['customer'] = $this->customer->data();
                 $params['subtotal'] = $subtotal;
                 $params['ongkir'] = ($ongkir > 0) ? 'Rp'. format_rupiah($ongkir) : 'Gratis';
-                $params['total'] = $subtotal + $ongkir - $discount;
+                $params['total'] = $subtotal + $ongkir - (isset($credit) ? $credit : 0);
                 $params['discount'] = $disc;
 
                 $this->session->set_userdata('order_quantity', $items);
