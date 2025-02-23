@@ -283,7 +283,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th scope="col">ID</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Harga</th>
-                                <th scope="col">Kuota</th>
+                                <th scope="col">Kuota Tersedia</th>
                             </tr>
                         </thead>
                         <tbody>

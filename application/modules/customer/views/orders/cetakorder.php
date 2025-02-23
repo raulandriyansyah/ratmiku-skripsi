@@ -71,8 +71,7 @@ window.print();
 </script>
 <div align="center">
     <img src="<?php echo base_url('assets/uploads/sites/logo.ratmiku.png'); ?>">
-    <div style="font-size: 20px" align="center">STRUCK BARANG
-    </div>
+    <div style="font-size: 20px" align="center">STRUCK BARANG<</div>
     <div style="font-size: 25px" align="center">RATMIKU LAMPUNG</div>
     <div style="font-size: 12px" align="center">Jl. Raden Ajeng Kartini, Tj. Karang, Tj. Karang
         Pusat, Bandar

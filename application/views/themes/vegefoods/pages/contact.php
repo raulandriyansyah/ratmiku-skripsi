@@ -1,13 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="hero-wrap hero-bread"
-    style="background-image: url('<?php echo get_theme_uri('images/dena.png'); ?>');">
+<div class="hero-wrap hero-bread" style="background-image: url('<?php echo get_theme_uri('images/maping.png'); ?>'); background-size: cover; background-position: center;">
     <div class="container">
         <!--<div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><?php echo anchor(base_url(), 'Home'); ?></span> <span>Hubungi
-                        Kami</span></p>
+                <p class="breadcrumbs"><span class="mr-2"><?php echo anchor(base_url(), 'Home'); ?></span> <span>Hubungi Kami</span></p>
                 <h1 class="mb-0 bread">Hubungi Kami</h1>
             </div>
         </div> -->

@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><b><?php echo $packages->name; ?></b></td>
                             </tr>
                             <tr>
-                                <td>Tanggal Berangkat</td>
+                                <td>Tanggal Posting</td>
                                 <td>:</td>
                                 <td><b><?php echo $packages->date_tour; ?></b></td>
                             </tr>

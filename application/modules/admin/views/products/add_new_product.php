@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="date_tour">Tanggal Tour:</label>
+                                <label class="form-control-label" for="date_tour">Tanggal Posting:</label>
                                 <input type="date" name="date_tour" value="<?php echo set_value('date_tour'); ?>"
                                     class="form-control" id="date_tour">
                                 <?php echo form_error('date_tour'); ?>

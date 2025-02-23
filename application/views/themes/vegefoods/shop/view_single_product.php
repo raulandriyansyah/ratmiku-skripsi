@@ -29,7 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <!--<h4>Tanggal Keberangkatan : <i><?php echo $product->date_tour; ?></i></h4>-->
                 <div class="rating d-flex">
                     <p class="text-left mr-4">
-                        <a href="#" class="mr-2">5.0</a>
+                        <a href="#" class="mr-2">4.8</a>
                         <a href="#"><span class="ion-ios-star-outline"></span></a>
                         <a href="#"><span class="ion-ios-star-outline"></span></a>
                         <a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <a href="#" class="mr-2" style="color: #000;">98 <span style="color: #bbb;">Rating</span></a>
                     </p>
                     <p class="text-left">
-                        <a href="#" class="mr-2" style="color: #000;">210<span style="color: #bbb;"> Sold </span></a>
+                        <a href="#" class="mr-2" style="color: #000;">20<span style="color: #bbb;"> Sold </span></a>
                     </p>
                 </div>
                 <p class="price">

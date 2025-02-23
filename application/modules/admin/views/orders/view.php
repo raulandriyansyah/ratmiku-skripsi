@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <?php elseif ($data->order_status == 3) : ?>
                                             <p>Sedang Liburan</p>
                                             <?php elseif ($data->order_status == 4) : ?>
-                                            <p>Order dan Liburan selesai. Semoga Terkesan</p>
+                                            <p>Order selesai. Semoga Terkesan</p>
                                             <a href="#" class="btn btn-warning" data-toggle="modal"
                                                 data-target="#deleteModal"><i class="fa fa-trash"></i> Hapus</a>
                                             <?php endif; ?>
@@ -164,9 +164,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Paket</th>
-                                    <th scope="col">Jumlah beli Tiket</th>
+                                    <th scope="col">Jumlah Pembelian</th>
                                     <th scope="col">Harga satuan</th>
-                                    <th scope="col">Tanggal Tour</th>
+                                    <th scope="col">Tanggal Pembelian</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -16,7 +16,7 @@ class Category extends CI_Controller
     public function fashion($param = null)
     {
         $params['title'] = 'Kategori Fashion ';
-        $category = ['FASHION', 'TAS', 'DOMPET', 'KACAMATA', 'SANDAL KARAKTER', 'TOPI', 'SANDAL WANITA', 'KAOS KAKI'];
+        $category = ['FASHION', 'TAS', 'DOMPET', 'SANDAL KARAKTER', 'SANDAL WANITA'];
         $products['products'] = $this->product->get_category_produk($category);
         $products['best_deal'] = $this->product->best_deal_product();
         $products['reviews'] = $this->review->get_all_reviews();
@@ -40,7 +40,7 @@ class Category extends CI_Controller
 
     public function aksesoris(){
         $params['title'] = 'Kategori Fashion ';
-        $category = ['AKSESORIS', 'BONEKA', 'BUNGA', 'KACAMATA', 'JAM TANGAN','SISIR RAMBUT', 'IKAT RAMBUT', 'IKAT PINGGANG'];
+        $category = ['AKSESORIS', 'BONEKA', 'BUNGA', 'KACAMATA', 'JAM TANGAN','SISIR RAMBUT', 'IKAT RAMBUT','KAOS KAKI', 'IKAT PINGGANG','TOPI','JAM DINDING'];
         $products['products'] = $this->product->get_category_produk($category);
         $products['best_deal'] = $this->product->best_deal_product();
         $products['reviews'] = $this->review->get_all_reviews();

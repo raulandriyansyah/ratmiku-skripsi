@@ -61,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Layanan Pengiriman</h3>
-                        <span>Gratis Ongkir Pengiriman Wilayah <br> Bandar Lampung</span>
+                        <span>Dari Kami, Untuk Perjalanan Terbaik Barang Anda</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Kualitas Pelayanan Terbaik</h3>
-                        <span>Pelayanan Cepat & Kenyamanan Berbelanja</span>
+                        <span>Melayani dengan Hati, Memberi yang Terbaik</span>
                     </div>
 
                 </div>
@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Layanan Bantuan</h3>
-                        <span>Layanan Bantuan 24/7 Selalu Online</span>
+                        <span>Layanan Bantuan Handal, Ketenangan Anda Prioritas Kami</span>
                     </div>
                 </div>
             </div>
