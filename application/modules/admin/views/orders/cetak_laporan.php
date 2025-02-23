@@ -27,15 +27,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
             min-height: 297mm;
             padding: 20mm;
             margin: 10mm auto;
-            border: 1px #D3D3D3 solid;
-            border-radius: 5px;
             background: white;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .subpage {
             padding: 1cm;
-            border: 1px solid black;
             height: 257mm;
             outline: 1cm solid white;
         }
@@ -84,9 +82,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
         }
 
         .signature {
-            margin-top: 50px;
+            position: absolute;
+            bottom: 20mm;
+            right: 20mm;
             text-align: right;
-            padding-right: 50px;
         }
 
         .signature div {
@@ -110,6 +109,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 Lampung</div>
             <hr>
             <?php if (count($orders) > 0): ?>
+                <?php
+                $total_harga = 0;
+                foreach ($orders as $order) {
+                    $total_harga += $order->total_price;
+                }
+                ?>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table align-items-center table-bordered">
@@ -128,9 +133,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <tr>
                                         <td><?= $order->id ?></td>
                                         <td><?= $order->customer ?></td>
-                                        <td><?= $order->order_date ?></td>
+                                        <td><?= date('d-m-Y', strtotime($order->order_date)) ?></td>
                                         <td><?= $order->total_items ?></td>
-                                        <td><?= $order->total_price ?></td>
+                                        <td><?= 'Rp ' . number_format($order->total_price, 0, ',', '.') ?></td>
                                         <td><?php
                                         switch ($order->order_status) {
                                             case 2:
@@ -155,6 +160,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div style="font-size: 18px; text-align: right;">
+                    <strong>Total Jumlah Harga: <?= 'Rp ' . number_format($total_harga, 0, ',', '.') ?></strong>
                 </div>
             <?php else: ?>
                 <div class="card-body">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="hero-wrap hero-bread" style="background-image: url('<?php echo get_theme_uri('images/maping.png'); ?>'); background-size: cover; background-position: center;">
+<div class="hero-wrap hero-bread" style="background-image: url('<?php echo get_theme_uri('images/mapping.jpeg'); ?>'); padding: 22em 0;">
     <div class="container">
         <!--<div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">

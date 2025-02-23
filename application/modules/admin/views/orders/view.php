@@ -156,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="mb-0">Tiket dalam pesanan</h3>
+                        <h3 class="mb-0">Barang pesanan</h3>
                     </div>
                     <div class="card-body p-0">
                         <table class="table align-items-center table-flush">
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th scope="col">Paket</th>
                                     <th scope="col">Jumlah Pembelian</th>
                                     <th scope="col">Harga satuan</th>
-                                    <th scope="col">Tanggal Pembelian</th>
+                                    <th scope="col">Tanggal Barang</th>
                                 </tr>
                             </thead>
                             <tbody>
