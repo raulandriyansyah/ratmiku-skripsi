@@ -9,100 +9,124 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="font-family: 'Arial', sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
       <div class="modal-header">
-        <!-- <h5 class="modal-title" id="exampleModalLabel">Member Ratmiku</h5> -->
+        <h5 class="modal-title" id="exampleModalLabel">Member Ratmiku</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <h5 class="text-center">Member Ratmiku</h5>
+      <div class="modal-body print-card">
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
-            <div class="d-flex align-items-center">
-              <div class="text-center" style="flex: 1;">
-                <img class="profile-user-img img-fluid img-square" src="<?= get_user_image() ?>" alt="raul"
-                  style="width: 120px; height: 120px;">
+            <div class="d-flex align-items-center"></div>
+              <div class="info-user text-center" style="flex: 2;">
+                <div class="info-user text-center" style="flex: 2;">
+                <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+                <h3 class="logo">Ratmiku</h3>
+                <div class="subtitle">Aksesoris, Homedecor, Fashion</div>
+                <p style="margin-bottom: 10px; font-weight: bold; font-size: 25px; font-family: 'Poppins', sans-serif;"><?= member_id() ?></p>
+                <div class="name-label">Nama</div>
+                <div class="profile-username"><?= get_user_name() ?></div>
+                </div>
               </div>
-              <div class="info-usre " style="flex: 2;">
-                <h3 class="profile-username text-left"><?= get_user_name() ?></h3>
-                <p class="text-muted text-left"><?= get_user_names() ?> | <?= get_user_email() ?></p>
-                <p>Member id : <?= member_id() ?></p>
-                <p class="text-left">Selamat datang sebagai member Ratmiku!</p>
               </div>
             </div>
+            </div>
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+            <button type="button" class="btn btn-secondary" onclick="printData()">Cetak</button>
+            </div> -->
+          </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
-        <button type="button" class="btn btn-secondary" onclick="printData()">Cetak</button>
-      </div>
-    </div>
-  </div>
-</div>
-<style>
-  .card.card-primary.card-outline {
-    border-color: pink;
-  }
+        <style>
+          .card.card-primary.card-outline {
+          border-color: pink;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
 
-  .card.card-primary.card-outline .card-body.box-profile {
-    background-color: #ffe6f2;
-  }
+          .logo {
+           font-family: 'Great Vibes', cursive;
+           font-size: 45px;
+           color: #ff66b2;
+          }
 
-  .profile-username {
-    color: #ff66b2;
-  }
+          .subtitle {
+          font-size: 15px;
+          color: #d47b9b;
+          font-weight: 600;
+          margin-bottom: 10px;
+          }
 
-  .text-muted {
-    color: #ff99cc !important;
-  }
+          .name-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 25px;
+          }
 
-  .btn-secondary {
-    background-color: #ff66b2;
-    border-color: #ff66b2;
-  }
+          .card.card-primary.card-outline .card-body.box-profile {
+          background-color: #ffe6f2;
+          }
 
-  .btn-secondary:hover {
-    background-color: #ff3385;
-    border-color: #ff3385;
-  }
+          .profile-username {
+          color:rgb(21, 7, 14);
+          border: 1px solid #ff66b2;
+          padding: 5px;
+          background-color: white;
+          color: black;
+          font-weight: bold;
+          border-radius: 5px;
+          }
 
-  /* nnew style */
-  @media print {
-  * {
-    visibility: hidden;
-  }
+          .text-muted {
+          color: #ff99cc !important;
+          }
 
-  .print-card, .print-card * {
-    visibility: visible;
-  }
+          .btn-secondary {
+          background-color: #ff66b2;
+          border-color: #ff66b2;
+          }
 
-  .print-card {
-    width: 8.6cm;
-    height: 5.4cm;
-    border: 2px solid black;
-    padding: 5px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    font-family: Arial, sans-serif;
-  }
+          .btn-secondary:hover {
+          background-color: #ff3385;
+          border-color: #ff3385;
+          }
 
-  .print-card img {
-    width: 2cm;
-    height: 2cm;
-    border-radius: 5px;
-  }
+          /* new style */
+          @media print {
+          * {
+          visibility: hidden;
+          }
 
-  .modal-footer {
-    display: none;
-  }
-}
+          .print-card, .print-card * {
+          visibility: visible;
+          }
 
-</style>
+          .print-card {
+          width: 8.6cm;
+          height: 5.4cm;
+          border: 2px solid black;
+          padding: 5px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          font-family: Arial, sans-serif;
+          }
+
+          .print-card img {
+          width: 2cm;
+          height: 2cm;
+          border-radius: 5px;
+          }
+
+          .modal-footer {
+          display: none;
+          }
+        }
+
+        </style>
 <script>
   $(document).ready(function () {
     $('#exampleModal').modal({
@@ -121,6 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 }
 
 </script>
+
 
 <!-- ending modal  -->
 <div class="content-wrapper">
@@ -209,7 +234,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 class="fas fa-arrow-circle-right"></i></a>
           </div>
 
-        
 
         </div>
       </div>

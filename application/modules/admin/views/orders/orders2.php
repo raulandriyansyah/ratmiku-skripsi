@@ -95,25 +95,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 Rp <?php echo format_rupiah($order->total_price); ?>
                                             </td>
                                             <td>
-                                                <?php
-                                                switch ($order->order_status) {
-                                                    case 2:
-                                                        echo 'Dalam proses';
-                                                        break;
-                                                    case 3:
-                                                        echo 'Sedang Liburan';
-                                                        break;
-                                                    case 4:
-                                                        echo 'Selesai';
-                                                        break;
-                                                    case 5:
-                                                        echo 'Di Batalkan';
-                                                        break;
-                                                    default:
-                                                        echo 'Status tidak diketahui';
-                                                        break;
-                                                }
-                                                ?>
+                                                
+                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

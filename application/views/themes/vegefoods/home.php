@@ -34,7 +34,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
 
 
-        <div class="slider-item" style="background-image: url(<?php echo get_theme_uri('images/dena.png'); ?>);">
+        <div class="slider-item" style="background-image: url(<?php echo get_theme_uri('images/kuponn.png'); ?>);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
